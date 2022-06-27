@@ -95,7 +95,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("~/.local/bin/volumehandler +2") },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("~/.local/bin/volumehandler -2") },
 	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("~/.local/bin/volumehandler") },
-	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("~/.local/bin/backlighthandle 2") },
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("~/.local/bin/backlighthandler +2") },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("~/.local/bin/backlighthandler -2") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
