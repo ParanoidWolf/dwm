@@ -7,6 +7,9 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const double activeopacity   = 1.0f;     /* Window opacity when it's focused (0 <= opacity <= 1) */
+static const double inactiveopacity = 0.875f;   /* Window opacity when it's inactive (0 <= opacity <= 1) */
+static       Bool bUseOpacity       = True;     /* Starts with opacity on any unfocused windows */
 static const char *fonts[]          = { "Play:size=11" };
 static const char dmenufont[]       = "Play:size=11";
 static const char col_gray1[]       = "#222222";
@@ -80,6 +83,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,                       setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return,                  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,                     view,           {0} },
+	{ MODKEY,                       XK_a,                       toggleopacity,  {0} },
 	{ MODKEY|ShiftMask,             XK_q,                       killclient,     {0} },
 	{ MODKEY,                       XK_t,                       setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,                       setlayout,      {.v = &layouts[1]} },
@@ -92,8 +96,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period,                  focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,                   tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,                  tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,		    XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY|ControlMask,		    XK_comma,                   cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period,                  cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Delete,                  spawn,          SHCMD("~/.local/bin/poweroptions") },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pulsemixer --change-volume +2") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pulsemixer --change-volume -2") },
