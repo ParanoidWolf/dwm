@@ -46,6 +46,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ NULL,       NULL },
 };
 
 #include <X11/XF86keysym.h>
@@ -91,6 +92,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period,                  focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,                   tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,                  tagmon,         {.i = +1 } },
+	{ MODKEY|ControlMask,		    XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Delete,                  spawn,          SHCMD("~/.local/bin/poweroptions") },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pulsemixer --change-volume +2") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pulsemixer --change-volume -2") },
